@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+public class currencyconverter {
+
+    @SuppressWarnings("ConvertToTryWithResources")
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("******** Welcome to Currency Converter ********");
+        System.out.println("Select conversion option:");
+        System.out.println("1. USD to INR");
+        System.out.println("2. INR to USD");
+        System.out.println("3. EUR to INR");
+        System.out.println("4. INR to EUR");
+
+        System.out.print("Enter your choice (1/2/3/4): ");
+        int option = sc.nextInt();
+
+        double inputAmount, convertedAmount;
+
+        switch (option) {
+            case 1 -> {
+                System.out.print("Enter amount in USD: ");
+                inputAmount = sc.nextDouble();
+                convertedAmount = convertUsdToInr(inputAmount);
+                System.out.println("Converted Amount in INR: ₹" + convertedAmount);
+            }
+
+            case 2 -> {
+                System.out.print("Enter amount in INR: ");
+                inputAmount = sc.nextDouble();
+                convertedAmount = convertInrToUsd(inputAmount);
+                System.out.println("Converted Amount in USD: $" + convertedAmount);
+            }
+
+            case 3 -> {
+                System.out.print("Enter amount in EUR: ");
+                inputAmount = sc.nextDouble();
+                convertedAmount = convertEurToInr(inputAmount);
+                System.out.println("Converted Amount in INR: ₹" + convertedAmount);
+            }
+
+            case 4 -> {
+                System.out.print("Enter amount in INR: ");
+                inputAmount = sc.nextDouble();
+                convertedAmount = convertInrToEur(inputAmount);
+                System.out.println("Converted Amount in EUR: €" + convertedAmount);
+            }
+
+            default -> System.out.println(" Invalid choice! Please enter 1, 2, 3, or 4.");
+        }
+
+        sc.close();
+    }
+
+    public static double convertUsdToInr(double usd) {
+        return usd * 83.47; 
+    }
+
+    public static double convertInrToUsd(double inr) {
+        return inr * 0.01198; 
+    }
+
+    public static double convertEurToInr(double eur) {
+        return eur * 89.10; 
+    }
+
+    public static double convertInrToEur(double inr) {
+        return inr * 0.0113; 
+    }
+}
